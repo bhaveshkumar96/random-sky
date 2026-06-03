@@ -229,6 +229,7 @@ export default function ProductDetails() {
         </div>
 
         <Button
+          w="100%"
           onClick={() => handleAddtoCart(productData)}
           className="add-to-cart-button"
           isLoading={buttonLoading}
