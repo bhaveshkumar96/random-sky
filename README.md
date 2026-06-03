@@ -69,7 +69,7 @@ A modern e-commerce frontend built with React, Vite, and Chakra UI.
 Clone the repository:
 
 ```bash
-git clone <repository-url>
+git clone https://github.com/bhaveshkumar96/random-sky.git
 ```
 
 Navigate to the project folder:
