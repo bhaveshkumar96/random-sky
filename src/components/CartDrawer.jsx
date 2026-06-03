@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import Drawer from "react-modern-drawer";
 import "react-modern-drawer/dist/index.css";
 import "../styles/CartDrawer.css";
@@ -12,6 +13,18 @@ function CartDrawer({
   removeFromCart,
   updateQuantity,
 }) {
+  useEffect(() => {
+    if (open) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [open]);
+
   const totalPrice = cartItems.reduce(
     (total, item) => total + item.price * (item.quantity || 1),
     0,
