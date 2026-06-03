@@ -6,7 +6,8 @@ import { Button, Heading, Text, Box } from "@chakra-ui/react";
 import { useCart } from "../hooks/useCart";
 import ProductDetailsAccordion from "../components/ProductDetailsAccordion";
 import { useParams } from "react-router-dom";
-
+// import styles from "../styles/ProductDetails.css";
+import "../styles/ProductDetails.css";
 export default function ProductDetails() {
   const [searchParams, setSearchParams] = useSearchParams();
   const { id } = useParams();
@@ -87,44 +88,20 @@ export default function ProductDetails() {
   };
   console.log("cartItems", cartItems);
   return (
-    <div
-      style={{
-        maxWidth: "1200px",
-        margin: "0 auto",
-        padding: "40px",
-        display: "grid",
-        gridTemplateColumns: "55% 45%",
-        gap: "40px",
-      }}
-    >
-      {/* Gallery */}
-      <div
-        style={{
-          overflow: "hidden",
-          borderRadius: "12px",
-          border: "1px solid #ddd",
-        }}
-      >
+    <div className="container">
+      <div className="image-section">
         <img
           src={selectedImage}
           alt="product"
           onMouseEnter={() => setZoom(true)}
           onMouseLeave={() => setZoom(false)}
           style={{
-            width: "100%",
-            display: "block",
-            transition: "transform 0.3s ease",
             transform: zoom ? "scale(1.2)" : "scale(1)",
           }}
+          className="main-image"
         />
 
-        <div
-          style={{
-            display: "flex",
-            gap: "10px",
-            marginTop: "15px",
-          }}
-        >
+        <div className="thumbnail-section">
           {images.map((img) => (
             <img
               key={img}
@@ -132,40 +109,20 @@ export default function ProductDetails() {
               alt=""
               onClick={() => setSelectedImage(img)}
               style={{
-                width: "80px",
-                height: "80px",
-                cursor: "pointer",
-                borderRadius: "8px",
-                padding: "2px",
                 border:
                   selectedImage === img ? "2px solid black" : "1px solid #ddd",
               }}
+              className="thumbnail-image"
             />
           ))}
         </div>
       </div>
 
-      {/* Product Info */}
-      <div>
+      <div className="product-info">
         <Heading size={"lg"}>{productData.title}</Heading>
-        <p
-          style={{
-            color: "#666",
-            fontSize: "14px",
-            marginBottom: "8px",
-          }}
-        >
-          {productData.category}
-        </p>
+        <p className="product-category">{productData.category}</p>
 
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            gap: "10px",
-            marginBottom: "24px",
-          }}
-        >
+        <div className="price-section">
           <span
             style={{
               fontSize: "30px",
@@ -194,8 +151,7 @@ export default function ProductDetails() {
           </span>
         </div>
 
-        {/* Colors */}
-        <div style={{ marginBottom: "24px" }}>
+        <div style={{ marginBottom: "24px" }} className="color-section">
           <h4>Color</h4>
 
           <div
@@ -210,17 +166,13 @@ export default function ProductDetails() {
                 key={color}
                 onClick={() => handleColorChange(color)}
                 style={{
-                  padding: "2px",
-                  width: "36px",
-                  height: "36px",
-                  borderRadius: "50%",
-                  background: color,
-                  cursor: "pointer",
+                  backgroundColor: color,
                   border:
                     selectedColor === color
                       ? "3px solid #ff2d55"
                       : "2px solid #ddd",
                 }}
+                className="color-option"
               />
             ))}
           </div>
@@ -233,18 +185,10 @@ export default function ProductDetails() {
           </Text>
         </div>
 
-        {/* Sizes */}
-        <div style={{ marginBottom: "24px" }}>
+        <div style={{ marginBottom: "24px" }} className="size-section">
           <h4>Size</h4>
 
-          <div
-            style={{
-              display: "flex",
-              gap: "10px",
-              flexWrap: "wrap",
-              marginTop: "10px",
-            }}
-          >
+          <div className="size-option">
             <Button
               variant={selectedSize === "s" ? "solid" : "outline"}
               onClick={() => handleSizeChange("s")}
@@ -270,15 +214,7 @@ export default function ProductDetails() {
           </Text>
         </div>
 
-        {/* Quantity */}
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            gap: "15px",
-            marginBottom: "24px",
-          }}
-        >
+        <div className="quantity-section">
           <Button
             onClick={() => {
               if (count > 1) {
@@ -293,17 +229,10 @@ export default function ProductDetails() {
         </div>
 
         <Button
-          style={{
-            width: "100%",
-            padding: "16px",
-            border: "none",
-            background: "#111",
-            color: "#fff",
-            fontSize: "16px",
-            borderRadius: "8px",
-            cursor: "pointer",
-          }}
           onClick={() => handleAddtoCart(productData)}
+          className="add-to-cart-button"
+          isLoading={buttonLoading}
+          loadingText="Adding to Cart..."
         >
           {isInCart ? "Added to Cart ✓" : "Add to Cart"}
         </Button>
