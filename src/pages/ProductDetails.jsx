@@ -86,7 +86,14 @@ export default function ProductDetails() {
       console.log(error.message);
     }
   };
-  console.log("cartItems", cartItems);
+  const handleIncreaseCount = () => {
+    if (selectedSize === "m" && count >= 2) {
+      toast.error("Only 2 left in stock");
+      return;
+    }
+
+    setCount((prev) => prev + 1);
+  };
   return (
     <div className="container">
       <div className="image-section">
@@ -106,13 +113,11 @@ export default function ProductDetails() {
             <img
               key={img}
               src={img}
-              alt=""
+              alt={img}
               onClick={() => setSelectedImage(img)}
-              style={{
-                border:
-                  selectedImage === img ? "2px solid black" : "1px solid #ddd",
-              }}
-              className="thumbnail-image"
+              className={`thumbnail-image ${
+                selectedImage === img ? "active" : ""
+              }`}
             />
           ))}
         </div>
@@ -225,7 +230,7 @@ export default function ProductDetails() {
             -
           </Button>
           <span>{count}</span>
-          <Button onClick={() => setCount((pre) => pre + 1)}>+</Button>
+          <Button onClick={handleIncreaseCount}>+</Button>
         </div>
 
         <Button

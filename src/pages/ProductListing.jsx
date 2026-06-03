@@ -12,7 +12,6 @@ export default function ProductListing() {
     try {
       const { data } = await axios.get(`https://fakestoreapi.com/products`);
       setProducts(data || []);
-      console.log(data);
     } catch (error) {
       console.log(error);
       setLoading(false);
