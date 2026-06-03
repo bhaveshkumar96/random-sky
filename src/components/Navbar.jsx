@@ -55,7 +55,6 @@ const Navbar = () => {
         zIndex: 100,
       }}
     >
-      {/* Logo */}
       <div
         style={{
           fontSize: "22px",
@@ -68,7 +67,6 @@ const Navbar = () => {
         Suprem Gear
       </div>
 
-      {/* Cart */}
       <div
         style={{
           position: "relative",
@@ -96,10 +94,6 @@ const Navbar = () => {
           {cartItems.length}
         </span>
       </div>
-
-      {/* <Drawer open={open} onClose={() => setOpen(false)} direction="bottom">
-        <div style={{ padding: 20 }}>Cart Items</div>
-      </Drawer> */}
       <CartDrawer
         open={open}
         setOpen={setOpen}

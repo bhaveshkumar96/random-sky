@@ -1,6 +1,6 @@
 import Drawer from "react-modern-drawer";
 import "react-modern-drawer/dist/index.css";
-
+import "../styles/CartDrawer.css";
 import { FiPlus, FiMinus, FiTrash2 } from "react-icons/fi";
 
 function CartDrawer({
@@ -14,7 +14,7 @@ function CartDrawer({
 }) {
   const totalPrice = cartItems.reduce(
     (total, item) => total + item.price * (item.quantity || 1),
-    0
+    0,
   );
   const deliveryCharge = 25;
   const subTotal = totalPrice;
@@ -24,7 +24,7 @@ function CartDrawer({
       open={open}
       onClose={() => setOpen(false)}
       direction="right"
-      size="75vh"
+      size={window.innerWidth <= 767 ? "70vw" : "450px"}
     >
       <div
         style={{
@@ -34,7 +34,6 @@ function CartDrawer({
           background: "#fff",
         }}
       >
-        {/* Header */}
         <div
           style={{
             display: "flex",
@@ -54,7 +53,6 @@ function CartDrawer({
           </span>
         </div>
 
-        {/* Empty State */}
         {cartItems.length === 0 && (
           <div
             style={{
@@ -66,21 +64,19 @@ function CartDrawer({
             <p>Add some products to continue</p>
           </div>
         )}
-
-        {/* Cart Items */}
         {cartItems.map((item, index) => (
           <div
             key={index}
-            style={{
-              display: "flex",
-              gap: "15px",
-              padding: "15px",
-              border: "1px solid #eee",
-              borderRadius: "10px",
-              marginBottom: "15px",
-            }}
+            // style={{
+            //   display: "flex",
+            //   gap: "15px",
+            //   padding: "15px",
+            //   border: "1px solid #eee",
+            //   borderRadius: "10px",
+            //   marginBottom: "15px",
+            // }}
+            className="cart-item"
           >
-            {/* Image */}
             <img
               src={item.image}
               alt={item.title}
@@ -91,7 +87,6 @@ function CartDrawer({
               }}
             />
 
-            {/* Content */}
             <div style={{ flex: 1 }}>
               <h4
                 style={{
@@ -111,7 +106,6 @@ function CartDrawer({
                 ${item.price}
               </p>
 
-              {/* Quantity */}
               <div
                 style={{
                   display: "flex",
@@ -161,7 +155,6 @@ function CartDrawer({
           </div>
         ))}
 
-        {/* Footer */}
         {cartItems.length > 0 && (
           <>
             <div

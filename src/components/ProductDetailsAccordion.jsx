@@ -3,7 +3,6 @@ import { Accordion, Box, Card, Text } from "@chakra-ui/react";
 export default function ProductDetailsAccordion({ description }) {
   return (
     <Accordion.Root collapsible multiple defaultValue={["description"]}>
-      {/* Description */}
       <Accordion.Item
         value="description"
         border="1px solid"
@@ -25,7 +24,6 @@ export default function ProductDetailsAccordion({ description }) {
         </Accordion.ItemContent>
       </Accordion.Item>
 
-      {/* Specifications */}
       <Accordion.Item
         value="specifications"
         border="1px solid"
@@ -79,7 +77,6 @@ export default function ProductDetailsAccordion({ description }) {
         </Accordion.ItemContent>
       </Accordion.Item>
 
-      {/* Reviews */}
       <Accordion.Item
         value="reviews"
         border="1px solid"
