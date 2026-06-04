@@ -75,7 +75,7 @@ git clone https://github.com/bhaveshkumar96/random-sky.git
 Navigate to the project folder:
 
 ```bash
-cd project-name
+cd random-sky
 ```
 
 Install dependencies:
@@ -108,21 +108,32 @@ npm run preview
 
 ```text
 src/
+├── assets/
+│   └── (images, icons, static assets)
+│
 ├── components/
+│   ├── CartDrawer.jsx
+│   ├── Navbar.jsx
 │   ├── ProductCard.jsx
-│   ├── ProductDetailsAccordion.jsx
-│   └── CartDrawer.jsx
+│   └── ProductDetailsAccordion.jsx
+│
+├── context/
+│   ├── CartContext.jsx
+│   └── CartProvider.jsx
+│
+├── hooks/
+│   └── useCart.js
 │
 ├── pages/
-│   ├── ProductListing.jsx
-│   └── ProductDetails.jsx
+│   ├── NotFoundPage.jsx
+│   ├── ProductDetails.jsx
+│   └── ProductListing.jsx
 │
-├── routes/
-│   └── AppRoutes.jsx
+├── styles/
+│   ├── CartDrawer.css
+│   └── ProductDetails.css
 │
-├── services/
-│   └── api.js
-│
+├── App.css
 ├── App.jsx
 └── main.jsx
 ```
