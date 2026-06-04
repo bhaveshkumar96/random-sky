@@ -8,8 +8,6 @@ function CartDrawer({
   open,
   setOpen,
   cartItems,
-  handleIncrease,
-  handleDecrease,
   removeFromCart,
   updateQuantity,
 }) {

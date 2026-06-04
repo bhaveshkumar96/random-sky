@@ -12,35 +12,7 @@ const Navbar = () => {
   const { addToCart, cartItems, removeFromCart, updateQuantity } = useCart();
   const [cartItemsCount, setCartItemsCount] = useState(cartItems.length || 0);
   const [cartItem, setCartItems] = useState(cartItems);
-  const handleIncrease = (id) => {
-    setCartItems((prev) =>
-      prev.map((item) =>
-        item.id === id
-          ? {
-              ...item,
-              quantity: item.quantity + 1,
-            }
-          : item,
-      ),
-    );
-  };
 
-  const handleDecrease = (id) => {
-    setCartItems((prev) =>
-      prev.map((item) =>
-        item.id === id
-          ? {
-              ...item,
-              quantity: Math.max(1, item.quantity - 1),
-            }
-          : item,
-      ),
-    );
-  };
-
-  // const removeFromCart = (id) => {
-  //   setCartItems((prev) => prev.filter((item) => item.id !== id));
-  // };
   return (
     <nav
       style={{
@@ -98,8 +70,6 @@ const Navbar = () => {
         open={open}
         setOpen={setOpen}
         cartItems={cartItems}
-        handleIncrease={handleIncrease}
-        handleDecrease={handleDecrease}
         removeFromCart={removeFromCart}
         updateQuantity={updateQuantity}
       />

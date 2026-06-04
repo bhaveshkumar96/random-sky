@@ -55,10 +55,10 @@ export default function ProductDetails() {
   const color = searchParams.get("color");
   const size = searchParams.get("size");
   const isInCart = cartItems.some((item) => item.id === productData.id);
-  const discountedPrice = (productData.price * 0.4).toFixed(2);
+  const discountedPrice = ((productData?.price || 0) * 0.4).toFixed(2);
   useEffect(() => {
     getProduct();
-  }, []);
+  }, [id]);
   const handleSizeChange = (size) => {
     setSelectedSize(size);
 
