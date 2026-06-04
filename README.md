@@ -2,6 +2,10 @@
 
 A modern e-commerce frontend built with React, Vite, and Chakra UI.
 
+## Deployment
+
+- **Live Application:** https://random-sky.vercel.app
+- **Hosted On:** Vercel
 ## 🚀 Features
 
 ### Product Listing Page
@@ -147,7 +151,6 @@ src/
 - Product filtering
 - Product sorting
 - Authentication
-- Persistent cart using localStorage
 - Checkout flow
 - Order history
 - Payment gateway integration
