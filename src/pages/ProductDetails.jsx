@@ -55,7 +55,7 @@ export default function ProductDetails() {
   const color = searchParams.get("color");
   const size = searchParams.get("size");
   const isInCart = cartItems.some((item) => item.id === productData.id);
-
+  const discountedPrice = (productData.price * 0.4).toFixed(2);
   useEffect(() => {
     getProduct();
   }, []);
@@ -143,7 +143,7 @@ export default function ProductDetails() {
               color: "#888",
             }}
           >
-            $45
+            ${(Number(productData.price) + Number(discountedPrice)).toFixed(2)}
           </span>
 
           <span
