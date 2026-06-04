@@ -37,7 +37,7 @@ function CartDrawer({
       open={open}
       onClose={() => setOpen(false)}
       direction="right"
-      size={window.innerWidth <= 767 ? "70vw" : "450px"}
+      size={window.innerWidth <= 767 ? "90vw" : "450px"}
     >
       <div
         style={{
@@ -231,6 +231,9 @@ function CartDrawer({
           </>
         )}
       </div>
+      <button onClick={() => setOpen(false)} className="close-drawer-btn">
+        Close
+      </button>
     </Drawer>
   );
 }
