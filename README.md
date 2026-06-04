@@ -1,7 +1,11 @@
 # 🛍️ E-Commerce Product Listing & Details App
 
 A modern e-commerce frontend built with React, Vite, and Chakra UI.
-#Live URL deployed on Vercel - https://random-sky.vercel.app
+
+## Deployment
+
+- **Live Application:** https://random-sky.vercel.app
+- **Hosted On:** Vercel
 ## 🚀 Features
 
 ### Product Listing Page
