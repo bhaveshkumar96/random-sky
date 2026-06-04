@@ -62,7 +62,7 @@ function CartDrawer({
               color: "#666",
             }}
           >
-            {cartItems.length} Items
+            {cartItems.length} {cartItems.length === 1 ? "Item" : "Items"}
           </span>
         </div>
 
@@ -77,89 +77,42 @@ function CartDrawer({
             <p>Add some products to continue</p>
           </div>
         )}
-        {cartItems.map((item, index) => (
-          <div
-            key={index}
-            // style={{
-            //   display: "flex",
-            //   gap: "15px",
-            //   padding: "15px",
-            //   border: "1px solid #eee",
-            //   borderRadius: "10px",
-            //   marginBottom: "15px",
-            // }}
-            className="cart-item"
-          >
-            <img
-              src={item.image}
-              alt={item.title}
-              style={{
-                width: "80px",
-                height: "80px",
-                objectFit: "contain",
-              }}
-            />
+        {cartItems.map((item) => (
+          <div key={item.id} className="cart-item">
+            <h4 className="cart-item-title">{item.title}</h4>
 
-            <div style={{ flex: 1 }}>
-              <h4
-                style={{
-                  margin: "0 0 8px",
-                  fontSize: "15px",
-                }}
-              >
-                {item.title}
-              </h4>
+            <div className="cart-item-body">
+              <div className="cart-left">
+                <img
+                  src={item.image}
+                  alt={item.title}
+                  className="cart-item-image"
+                />
 
-              <p
-                style={{
-                  margin: "0 0 12px",
-                  fontWeight: "bold",
-                }}
-              >
-                ${item.price}
-              </p>
+                <div className="quantity-controls">
+                  <button
+                    className="qty-btn"
+                    onClick={() => updateQuantity(item.id, -1)}
+                  >
+                    <FiMinus />
+                  </button>
 
-              <div
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  gap: "10px",
-                }}
-              >
-                <button
-                  onClick={() => updateQuantity(item.id, -1)}
-                  style={{
-                    width: "32px",
-                    height: "32px",
-                    cursor: "pointer",
-                  }}
-                >
-                  <FiMinus />
-                </button>
+                  <span>{item.quantity}</span>
 
-                <span>{item.quantity}</span>
+                  <button
+                    className="qty-btn"
+                    onClick={() => updateQuantity(item.id, 1)}
+                  >
+                    <FiPlus />
+                  </button>
+                </div>
+              </div>
+              <div className="cart-right">
+                <p className="cart-item-price">${item.price}</p>
 
                 <button
-                  onClick={() => updateQuantity(item.id, 1)}
-                  style={{
-                    width: "32px",
-                    height: "32px",
-                    cursor: "pointer",
-                  }}
-                >
-                  <FiPlus />
-                </button>
-
-                <button
+                  className="delete-btn"
                   onClick={() => removeFromCart(item.id)}
-                  style={{
-                    marginLeft: "auto",
-                    border: "none",
-                    background: "none",
-                    cursor: "pointer",
-                    color: "red",
-                    fontSize: "18px",
-                  }}
                 >
                   <FiTrash2 />
                 </button>

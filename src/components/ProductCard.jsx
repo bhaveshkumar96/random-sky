@@ -9,10 +9,12 @@ import {
 } from "@chakra-ui/react";
 import { LuStar, LuShoppingCart } from "react-icons/lu";
 import { useNavigate } from "react-router-dom";
+import { useCart } from "../hooks/useCart";
 
 export default function ProductCard({ product, addToCart }) {
   const navigate = useNavigate();
-
+  const { cartItems } = useCart();
+  const isAddedToCart = cartItems.some((item) => item.id === product.id);
   return (
     <Card.Root
       h="100%"
@@ -68,14 +70,17 @@ export default function ProductCard({ product, addToCart }) {
       <Card.Footer>
         <Button
           width="100%"
-          colorPalette="blackAlpha"
+          colorPalette={isAddedToCart ? "green" : "blackAlpha"}
           onClick={(e) => {
-            e.stopPropagation(); // Prevent card navigation
-            addToCart?.(product);
+            e.stopPropagation();
+
+            if (!isAddedToCart) {
+              addToCart(product);
+            }
           }}
         >
           <LuShoppingCart />
-          Add to Cart
+          {isAddedToCart ? "Added to Cart ✓" : "Add to Cart"}
         </Button>
       </Card.Footer>
     </Card.Root>
